@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-------- Required Meta Tags -------->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-------- Google Fonts -------->
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:700,700i,400,400i|Roboto|Rubik"
+            rel="stylesheet">
+
+        <!-------- Bootstrap CSS -------->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+            crossorigin="anonymous">
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-------- CSS file -------->
+        <link rel="stylesheet" href="style.css">
+
+        <title>Bookstore</title>
+    </head>
+
+    <body>
+        <div id="app">
+
+            <header>
+                <div class="search-nav">
+                    <nav id="menu-burger">
+                        <!-- A fake / hidden checkbox is used as click reciever, so you can use the
+                        :checked selector on it. -->
+                        <input type="checkbox"/>
+
+                        <!-- Some spans to act as a hamburger. -->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <ul id="menu">
+                            <a v-on:click="showPages('home')">
+                                <li>Home</li>
+                            </a>
+                            <a v-on:click="showPages('allbooks')">
+                                <li>AllBooks</li>
+                            </a>
+                            <a v-on:click="showPages('agenda')">
+                                <li>Agenda</li>
+                            </a>
+                            <a v-on:click="showPages('about')">
+                                <li>About</li>
+                            </a>
+                            <a v-on:click="showPages('blog')">
+                                <li>Blog</li>
+                            </a>
+                        </ul>
+                    </nav>
+
+                    <div class="search">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input v-model="search" type="search" id="search" placeholder="Search..."/>
+                    </div>
+                    <div class="cart">
+                        <a v-on:click="showPages('checkout')">
+                            {{totalItems}}
+                            {{(totalItems > 1 || totalItems === 0 ? " items" : " item")  }}
+                            &sol;
+                            {{ totalPrice }}
+                            &euro;
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </header>
+
+            <div class="wrapper">
+
+                <div class="title">
+                    <h1>bookstore</h1>
+                    <hr>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a v-on:click="showPages('home')">home</a>
+                        </li>
+                        <li>
+                            <a v-on:click="showPages('allbooks')">all books</a>
+                        </li>
+                        <li>
+                            <a v-on:click="showPages('agenda')">agenda</a>
+                        </li>
+                        <li>
+                            <a v-on:click="showPages('about')">about</a>
+                        </li>
+                        <li>
+                            <a v-on:click="showPages('blog')">blog</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!--------------------------------------------------------------- HOME -->
+
+                <div v-if="pages == 'home'" class="home">
+                    <div class="contenido">
+                        <div class="main-box">
+                            <div class="carousel-wrapper">
+                                <span id="item_1"></span>
+                                <span id="item_2"></span>
+                                <span id="item_3"></span>
+                                <div class="carousel-item item_1">
+                                    <a v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt="">
+                                    </a>
+                                    <!-- <h2>Books of the month</h2>-->
+                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                    accumsan pretium dolor vel convallis. Aliquam erat volutpat. Maecenas lacus
+                                    nunc, imperdiet sed mi et, finibus suscipit mi.</p>-->
+                                    <a class="arrow arrow-prev" href="#item_3"></a>
+                                    <a class="arrow arrow-next" href="#item_2"></a>
+                                </div>
+
+                                <div class="carousel-item item_2">
+                                    <a v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <!-- <h2>Books of the month</h2>-->
+                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                    accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
+                                    <a class="arrow arrow-prev" href="#item_1"></a>
+                                    <a class="arrow arrow-next" href="#item_3"></a>
+                                </div>
+
+                                <div class="carousel-item item_3">
+                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <!-- <h2>Books of the month</h2>-->
+                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                                    accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
+                                    <a class="arrow arrow-prev" href="#item_2"></a>
+                                    <a class="arrow arrow-next" href="#item_1"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-1">
+                            <a v-on:click="showPages('blog')">
+                                <h2>Blog</h2>
+                            </a>
+                        </div>
+                        <div class="box-2">
+                            <a v-on:click="showPages('agenda')">
+                                <h2>Agenda</h2>
+                            </a>
+                        </div>
+                        <div class="box-3">
+                            <a v-on:click="showPages('allbooks')">
+                                <h2>Shop</h2>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--------------------------------------------------------------- ABOUT -->
+
+                <div v-if="pages == 'about'" class="about">
+                    <div class="contenido-about">
+                        <div class="about-content">
+                            <h3>Lorem ipsum.</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro alias
+                                similique, sed architecto, non possimus inventore voluptate delectus pariatur
+                                unde autem earum doloremque esse nemo tempore minima, placeat beatae
+                                perferendis!</p>
+                        </div>
+
+                        <div class="about-info">
+                            <div class="title-about-info">
+                                <p class="main-title">Address</p>
+                                <p>c/ Gral. Álvarez de Castro, 5</p>
+                                <p>08003 - Barcelona</p>
+                            </div>
+                            <div class="title-about-info">
+                                <p class="main-title">Opening Hours</p>
+                                <div class="opening-hours-box">
+                                    <p>Monday to Friday:</p>
+                                    <div class="opening-hours">
+                                        <p>10h-14.30h</p>
+                                        <p>16.30h-20h</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title-about-info">
+                                <p class="main-title">Phone and Email</p>
+                                <p>+34 934 512 664</p>
+                                <p>info@bookstore.com</p>
+                            </div>
+                        </div>
+                        <div class="map-store-images">
+                            <div :style="{'background-image': 'url(agenda_images/'+ aboutImage +')'}" class="store-img">
+
+                                <!-- <img src="agenda_images/amy-shamblen-671056-unsplash.jpg" alt=""> -->
+                            </div>
+
+                            <div class="map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4096151969084!2d2.1755313154257583!3d41.38690997926418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2fbc781c87d%3A0x4ea7bf341635d449!2sCarrer+del+General+%C3%81lvarez+de+Castro%2C+5%2C+08003+Barcelona!5e0!3m2!1ses!2ses!4v1548848527788"
+                                    allowfullscreen="allowfullscreen"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------------------- AGENDA -->
+
+                <div v-if="pages == 'agenda'" class="agenda">
+                    <div class="contenido-agenda">
+                        <div class="event-info">
+                            <div class="event-img">
+                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                            </div>
+                            <div class="event-description">
+                                <div class="title-day-event">
+                                    <p>Title of the event</p>
+                                    <p>15h</p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
+                                    cupiditate! Vel, accusamus.
+                                </p>
+                                <div class="collapse" id="block-id">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
+                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
+                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
+                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
+                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
+                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
+                                        nulla enim consectetur, maxime.</p>
+                                </div>
+                                <a
+                                    href="#block-id"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    aria-controls="block-id">
+
+                                    <span class="collapsed">
+                                        Show more
+                                    </span>
+                                    <span class="expanded">
+                                        Show Less
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-img">
+                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                            </div>
+                            <div class="event-description">
+                                <div class="title-day-event">
+                                    <p>Title of the event</p>
+                                    <p>15h</p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
+                                    cupiditate! Vel, accusamus.
+                                </p>
+                                <div class="collapse" id="block-id">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
+                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
+                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
+                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
+                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
+                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
+                                        nulla enim consectetur, maxime.</p>
+                                </div>
+                                <a
+                                    href="#block-id"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    aria-controls="block-id">
+
+                                    <span class="collapsed">
+                                        Show more
+                                    </span>
+                                    <span class="expanded">
+                                        Show Less
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-img">
+                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                            </div>
+                            <div class="event-description">
+                                <div class="title-day-event">
+                                    <p>Title of the event</p>
+                                    <p>15h</p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
+                                    cupiditate! Vel, accusamus.
+                                </p>
+                                <div class="collapse" id="block-id">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
+                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
+                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
+                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
+                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
+                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
+                                        nulla enim consectetur, maxime.</p>
+                                </div>
+                                <a
+                                    href="#block-id"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    aria-controls="block-id">
+
+                                    <span class="collapsed">
+                                        Show more
+                                    </span>
+                                    <span class="expanded">
+                                        Show Less
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-img">
+                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                            </div>
+                            <div class="event-description">
+                                <div class="title-day-event">
+                                    <p>Title of the event</p>
+                                    <p>15h</p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
+                                    cupiditate! Vel, accusamus.
+                                </p>
+                                <div class="collapse" id="block-id">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
+                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
+                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
+                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
+                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
+                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
+                                        nulla enim consectetur, maxime.</p>
+                                </div>
+                                <a
+                                    href="#block-id"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    aria-controls="block-id">
+
+                                    <span class="collapsed">
+                                        Show more
+                                    </span>
+                                    <span class="expanded">
+                                        Show Less
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-img">
+                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                            </div>
+                            <div class="event-description">
+                                <div class="title-day-event">
+                                    <p>Title of the event</p>
+                                    <p>15h</p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
+                                    cupiditate! Vel, accusamus.
+                                </p>
+                                <div class="collapse" id="block-id">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
+                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
+                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
+                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
+                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
+                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
+                                        nulla enim consectetur, maxime.</p>
+                                </div>
+                                <a
+                                    href="#block-id"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    aria-controls="block-id">
+
+                                    <span class="collapsed">
+                                        Show more
+                                    </span>
+                                    <span class="expanded">
+                                        Show Less
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--------------------------------------------------------------- BLOG -->
+
+                <!--------------------------------------------------------------- ALL BOOKS -->
+
+                <div v-if="pages == 'allbooks'" class="allbooks">
+                    <div class="contenido-allbooks">
+                        <div class="box-quote">
+                            <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                                saepe ab, nisi quo laudantium perspiciatis assumenda.</p>
+                            <p class="title-book">Lorem ipsum dolor sit amet.</p>
+                        </div>
+
+                        <div class="filters-bar">
+                            <div class="web-path">
+                                <p>Home/AllBooks</p>
+                            </div>
+                            <div class="filters">
+                                <div class="ages-filter">
+                                    <select v-model="agesValue">
+                                        <option value="">by Ages</option>
+                                        <option value="0-3 years">0-3 years</option>
+                                        <option value="3-5 years">3-5 years</option>
+                                        <option value="5-6 years">5-6 years</option>
+                                        <option value="6-8 years">6-8 years</option>
+                                        <option value="8-10 years">8-10 years</option>
+                                    </select>
+                                </div>
+                                <div class="topics-filter">
+                                    <select v-model="themeValue">
+                                        <option value="">by Theme</option>
+                                        <option value="Classic Story Tales">Classic Story Tales</option>
+                                        <option value="Illustrated Books">Illustrated Books</option>
+                                        <option value="Mistery &amp; Crime">Mistery &amp; Crime</option>
+                                        <option value="Graphic Novels">Graphic Novels</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-box">
+                            <div v-for="item in filteredBooks" class="book-info">
+                                <div class="cover-img">
+                                    <a v-on:click="showPages('itemsCart', item.title)">
+                                        <img v-bind:src="'/images/' + item.cover_image" v-bind:alt="item.title">
+                                    </a>
+
+                                </div>
+
+                                <div class="price-book-info">
+                                    <p>{{ item.title }}</p>
+                                    <p>{{ item.price }}
+                                        &euro;</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--------------------------------------------------------------- ADD TO CART
+                -->
+
+                <div v-if="pages == 'itemsCart'" class="itemsCart">
+                    <div class="contenido-itemsCart">
+
+                        <div class="item-pict">
+                            <div class="big-pict">
+                                <img v-bind:src="'/images/' + bookSelected.cover_image">
+                            </div>
+                            <div class="small-pict">
+                                <div class="pict">
+                                    <img src="libros/MiniHeroes_1.png">
+                                </div>
+                                <div class="pict">
+                                    <img src="https://placehold.it/250x200">
+                                </div>
+                                <div class="pict">
+                                    <img src="https://placehold.it/250x200">
+                                </div>
+                                <div class="pict">
+                                    <img src="https://placehold.it/250x200">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <h3>{{ bookSelected.title }}</h3>
+                            <hr>
+                            <div class="price-item">
+                                <p>{{ bookSelected.price }}
+                                    &euro;
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="quantity-box">
+                                <div class="quantity-item">
+                                    <label for="input-number-def">Quantity</label>
+                                    <input
+                                        id="input-number-def"
+                                        class="def"
+                                        type="number"
+                                        min="1"
+                                        step="1"
+                                        placeholder="counter"
+                                        v-model="counter"/>
+
+                                    <!-- <label for="middle-label" class="middle">Quantity</label> <input
+                                    type="text" id="middle-label" :placeholder="counter" v-model="counter"> </div>
+                                    <div class="plus-minus-icons"> <a v-on:click="addReduceItems"> <i class="far
+                                    fa-plus-square"></i> </a> <a v-on:click="addReduceItems"> <i class="far
+                                    fa-minus-square"></i> </a> </div> -->
+                                </div>
+                                <div class="addToCart-btn">
+                                    <a v-on:click="addToCart(bookSelected)" class="button">Add to Cart</a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <p>Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus
+                                eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget
+                                luctus tortor. Nulla facilisi. Duis aliquet egestas purus in.</p>
+
+                            <div class="share-box">
+                                <a class="button">Facebook</a>
+                                <a class="button">Twitter</a>
+                                <a class="button">Yo</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="similar-products-box">
+                        <p>Similar Products</p>
+                        <div class="pict-box">
+
+                            <div class="pict">
+                                <img src="https://placehold.it/350x200">
+                                <div class="info-pict">
+                                    <h5>Other Product</h5>
+                                    <p>20.0 €</p>
+                                </div>
+                                <!-- <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.
+                                Nulla fringilla, orci ac euismod semper, magna diam.</p> <a href="#"
+                                class="button hollow tiny expanded">Buy Now</a> -->
+                            </div>
+                            <div class="pict">
+                                <img src="https://placehold.it/350x200">
+                                <div class="info-pict">
+                                    <h5>Other Product</h5>
+                                    <p>20.0 €</p>
+                                </div>
+                                <!-- <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.
+                                Nulla fringilla, orci ac euismod semper, magna diam.</p> <a href="#"
+                                class="button hollow tiny expanded">Buy Now</a> -->
+                            </div>
+                            <div class="pict">
+                                <img src="https://placehold.it/350x200">
+                                <div class="info-pict">
+                                    <h5>Other Product</h5>
+                                    <p>20.0 €</p>
+                                </div>
+                                <!-- <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.
+                                Nulla fringilla, orci ac euismod semper, magna diam.</p> <a href="#"
+                                class="button hollow tiny expanded">Buy Now</a> -->
+                            </div>
+                            <div class="pict">
+                                <img src="https://placehold.it/350x200">
+                                <div class="info-pict">
+                                    <h5>Other Product</h5>
+                                    <p>20.0 €</p>
+                                </div>
+                                <!-- <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.
+                                Nulla fringilla, orci ac euismod semper, magna diam.</p> <a href="#"
+                                class="button hollow tiny expanded">Buy Now</a> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--------------------------------------------------------------- CHECKOUT -->
+
+                <div v-if="pages == 'checkout'" class="checkout">
+                    <div class="contenido-checkout">
+                        <div class="main-row">
+                            <p>Description</p>
+                            <div class="item-quantity-price-box">
+                                <p>Quantity</p>
+                                <p>Price</p>
+                            </div>
+                            <p v-if="cart.length === 0">{{ emptyCart }}</p>
+                        </div>
+                        <div class="line"></div>
+                        <div v-for="(item,index) in cart" class="item-box">
+
+                            <div class="item">
+                                <div class="item-detail">
+                                    <img class="item-image" src="images/shop_img_home.png" alt="">
+                                    <div class="item-title">
+                                        <h5>{{ item.title }}</h5>
+                                        <button v-on:click="removeItemFromCart(index)" class="remove">remove</button>
+                                    </div>
+                                </div>
+                                <div class="item-quantity-price-box">
+                                    <div class="item-quantity">
+                                        <label for="input-number-def"></label>
+                                        <input
+                                            id="input-number-def"
+                                            class="def"
+                                            type="number"
+                                            min="1"
+                                            step="1"
+                                            placeholder="counter"
+                                            v-model="item.quantity"/>
+                                        <!-- <input type="text" placeholder="counter" v-model="item.quantity"> -->
+                                    </div>
+                                    <span class="item-price">{{ (item.price * item.quantity).toFixed(2) }}
+                                        &euro;</span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+
+                        </div>
+                    </div>
+                    <div class="checkout-row">
+                        <div class="request">
+                            <label for="requests">Any special requests?</label>
+                            <textarea id="requests" name="requests" rows="5" cols="33"></textarea>
+                        </div>
+                        <div class="checkout-total-price">
+                            <p>Subtotal before delivery</p>
+                            <p>
+                                {{ totalPrice }}
+                                &euro;</p>
+                            <button class="checkOut">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer>
+                    <div class="copyright">
+                        <p>Designed &amp; managed by Elviraleem</p>
+                        <p class="icon-designer">&#8496;</p>
+                        <p>&copy; Bookstore 2019</p>
+
+                    </div>
+                    <div class="info">
+                        <a href="#">Returns Policy</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Shipping</a>
+                        <div class="social-icons">
+                            <i class="fab fa-facebook-square"></i>
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                    <div class="newsletter">
+                        <input type="email" value="Enter your email address to receive our newsletter">
+                        <button class="btn-submit">Subscribe</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <!------- VUE SCRIPTS------->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!------- JS SCRIPTS------->
+    <script src="data-json.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
