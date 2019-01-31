@@ -19,7 +19,7 @@ var app = new Vue({
         myData: [],
         counter: 0,
         emptyCart: "Your cart is empty",
-        aboutImage: "amy-shamblen-671056-unsplash.jpg"
+        aboutImage: "agenda/amy-shamblen-671056-unsplash.jpg"
 
     },
 
