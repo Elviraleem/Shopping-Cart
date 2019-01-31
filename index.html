@@ -32,7 +32,7 @@
         <title>Bookstore</title>
     </head>
 
-    <body>
+    <body onresize="app.window()">
         <div id="app">
 
             <header>
@@ -122,6 +122,7 @@
                                 <span id="item_2"></span>
                                 <span id="item_3"></span>
                                 <div class="carousel-item item_1">
+                                    <h1 v-if="windowWidth > 800">HDFGDFGDFGDFGDFGDFGDFG</h1>
                                     <a v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt="">
                                     </a>
                                     <!-- <h2>Books of the month</h2>-->
@@ -142,6 +143,8 @@
                                 </div>
 
                                 <div class="carousel-item item_3">
+                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
                                     <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus

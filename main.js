@@ -4,7 +4,7 @@ var app = new Vue({
 
     created: function () {
         this.getData();
-        // this.windowWidth()
+        
         
 
     },
@@ -19,7 +19,8 @@ var app = new Vue({
         myData: [],
         counter: 0,
         emptyCart: "Your cart is empty",
-        aboutImage: "amy-shamblen-671056-unsplash.jpg"
+        aboutImage: "amy-shamblen-671056-unsplash.jpg",
+        windowWidth: 0
 
     },
 
@@ -75,7 +76,10 @@ var app = new Vue({
             var sliderImage = Math.floor(Math.random() * this.imagesLinks.length);
             var selectedImage = this.imagesLinks[sliderImage];
             return "images/" + selectedImage;
-            }
+        },
+        window(){
+            this.windowWidth = window.innerWidth;
+        }
         
     },
 
@@ -129,34 +133,6 @@ var app = new Vue({
             // console.log(itemPrices);
             
         },
-        // sliderImageStyle(){
-        //     var pict = this.myData.slider_image_web
-        //     return {
-        //         "background": "url('+pict+')"
-        //     }
-        // }
-
-        
-        
-        // windowWidth: function () {
-        //     var window = window.innerWidth;
-        //     if (window < 480){
-
-        //     }else if(window < 768){
-
-        //     }else if(window <1200){
-
-        //     }else {
-
-        //     }
-        //     }
-        // }
-        
-
-
-        
-        
     }
-
   
 });
