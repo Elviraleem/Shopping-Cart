@@ -420,7 +420,7 @@ hr {
 
 .contenido-itemsCart{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-gap: 20px;
     margin-top: 30px;
     
@@ -609,17 +609,20 @@ footer {
 .book-box {
     display: grid;
     margin-top: 20px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 15px;
 }
 
 .cover-img {
     background-color: lightgray;
-    width: 100%;
-   
+    max-width: 200px;
+    height: 200px;
+    overflow: hidden;
+
 }
 .cover-img img{
-    width: 260px;
+    width: 100%;
+    height: 100%;
 }
 
 .price-book-info {
@@ -681,6 +684,10 @@ footer {
 .price-item p {
     font-size: 20px;
 }
+.big-pict{
+    overflow: hidden;
+    height: 400px;
+}
 .big-pict img{
     width: 100%;
 }
@@ -699,6 +706,7 @@ footer {
 }
 .pict img{
     width: 100%;
+    height: 100%;
 }
 .pict-box .pict img{
     width: 100%;

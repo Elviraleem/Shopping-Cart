@@ -18,7 +18,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "cuentos_criminales_cover.png",
+            "cover_image": "cuentos_criminales_cover.jpg",
             "slider_image_web": "cuentos_criminales_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -43,7 +43,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "monstruo_armario_cover.png",
+            "cover_image": "monstruo_armario_cover.jpg",
             "slider_image_web": "monstruo_armario_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -68,7 +68,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "papa_cover.png",
+            "cover_image": "papa_cover.jpg",
             "slider_image_web": "papa_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -93,7 +93,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "hermanos_cover.png",
+            "cover_image": "hermanos_cover.jpg",
             "slider_image_web": "hermanos_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -119,7 +119,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "mini_heroes_cover.png",
+            "cover_image": "miniHeroes_cover.jpg",
             "slider_image_web": "mini_heroes_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -144,7 +144,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "lunambula_cover.png",
+            "cover_image": "lunambula_cover.jpg",
             "slider_image_web": "lunambula_home.png",
             "slider_image_tablet": "",
             "slider_image_mobile": "",
@@ -169,7 +169,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "PapaYyoAveces_cover.png",
+            "cover_image": "PapayYo_cover.jpg",
             "slider_image_web": "PapaYyoAveces_home.png",
             "slider_image_tablet": "PapaYyoAveces_home_tablet",
             "slider_image_mobile": "PapaYyoAveces_home_mobile.png",
@@ -194,7 +194,7 @@ var myJson = {
                 }
             ],
 
-            "cover_image": "si_quieres_ver_ballena_cover.png",
+            "cover_image": "siquieresverBallena_cover.jpg",
             "slider_image_web": "Si-quieres-ver-una-ballena_home.png",
             "slider_image_tablet": "PapaYyoAveces_home_tablet",
             "slider_image_mobile": "PapaYyoAveces_home_mobile.png",
