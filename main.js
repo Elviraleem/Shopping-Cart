@@ -4,9 +4,7 @@ var app = new Vue({
 
     created: function () {
         this.getData();
-        
-        
-
+        this.windowWidth = window.innerWidth;
     },
 
     data: {
@@ -77,6 +75,18 @@ var app = new Vue({
             var selectedImage = this.imagesLinks[sliderImage];
             return "images/" + selectedImage;
         },
+        getSliderImagesTablet() {
+            var sliderImageTablet = Math.floor(Math.random() * this.imagesLinksTablet.length);
+            var selectedImage = this.imagesLinksTablet[sliderImageTablet];
+            return "images/" + selectedImage;
+        },
+        getSliderImagesMobile() {
+            var sliderImageMobile = Math.floor(Math.random() * this.imagesLinksMobile.length);
+            var selectedImage = this.imagesLinksMobile[sliderImageMobile];
+            return "images/" + selectedImage;
+
+        },
+
         window(){
             this.windowWidth = window.innerWidth;
         }
@@ -113,7 +123,16 @@ var app = new Vue({
                 return e.slider_image_web
             });   
         },
-
+        imagesLinksTablet(){
+            return this.myData.map((e) =>{
+                return e.slider_image_tablet
+            });   
+        },
+        imagesLinksMobile(){
+            return this.myData.map((e) =>{
+                return e.slider_image_mobile
+            });   
+        },
         bookSelected: function () {
             return this.myData.find(book => book.title == this.book);
 

@@ -32,7 +32,8 @@
         <title>Bookstore</title>
     </head>
 
-    <body onresize="app.window()">
+    <body onresize="app.window()"> <!-- onresize event. It has to be in the body and call a function. 
+                                        Due to it´s outside the id="app" the function starts with app. -->
         <div id="app">
 
             <header>
@@ -122,9 +123,9 @@
                                 <span id="item_2"></span>
                                 <span id="item_3"></span>
                                 <div class="carousel-item item_1">
-                                    <h1 v-if="windowWidth > 800">HDFGDFGDFGDFGDFGDFGDFG</h1>
-                                    <a v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt="">
-                                    </a>
+                                    <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat. Maecenas lacus
@@ -134,7 +135,9 @@
                                 </div>
 
                                 <div class="carousel-item item_2">
-                                    <a v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
@@ -143,9 +146,13 @@
                                 </div>
 
                                 <div class="carousel-item item_3">
-                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
-                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
-                                    <a v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <!-- v-if con las diferentes medidas del windowWidth en cada <a>. 
+                                        Crear también en main.js 2 funciones getSliderImages para tablet y móvil
+                                         con un parámetro que cambie la imagen según dispositivo.  --> 
+                                        
+                                    <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
+                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
