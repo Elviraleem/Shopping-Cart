@@ -201,23 +201,6 @@ var myJson = {
             "ages": "5-6 years",
             "description_short": "Cuando una nueva inquilina se instaló en la buhardilla de la calle Elmstreet presentimos que ese verano iba a ser diferente. Nuestra rutina se trastocó, pero tardamos tiempo en advertir adónde nos conduciría aquel afán de aventura. Todo transcurrió en la oscuridad, siempre con la misteriosa complicidad de la noche.",
             "description_long": "Lunámbula (apodo con el que los jóvenes protagonistas se refieren a Madame Merlot) es un ser enigmático, deambula entre las calles dejando estampas de números en las esquinas, ilumina pasos oscuros en la noche, deja señales misteriosas clavadas en la arena… su figura recorre la ciudad en silencio cubierta de un sinfín de interrogantes y preguntas sin responder. Nuestros anónimos “detectives” la siguen a todas partes tratando de pasar desapercibidos (a pesar de que su objeto de estudio se ha percatado perfectamente de la presencia de sus nuevos amigos), con el afán de entender el porqué de lo que hace esta singular mujer. Lunámbula es el último libro de Einar Turkowski, una obra poética sin más fin que el de hacernos sentir niños una vez más. La lectura va despertando nuestra curiosidad página tras página, haciendo que sintamos ese cosquilleo en el estómago que solo se percibe cuando uno es pequeño y descubre un rincón secreto del mundo. Es una invitación a imaginar tramas ocultas e historias de fantasía, a explorar en lo más profundo de nuestro ser en busca de nuestra inocencia perdida. En un relato que parece no tener final, la verdadera meta es el camino que el autor nos invita a seguir. Cada palabra, cada imagen está pensada para hacernos soñar de nuevo."
-            "agenda" : [
-                {
-                    "activity": "",
-                    "day":"",
-                    "hour":"",
-                    "image": ""
-                    
-            
-         
-         
-         
-         }
-         
-         
-         
-            ]
-         
 
         },
             
@@ -226,5 +209,71 @@ var myJson = {
 
         ],
 
-   
+   "agenda" : [
+
+       {
+           "activity": "JASMIN ANOSCHKIN: IMAGINARY FRIENDS",
+           "day":"Sa 9th & 16th February",
+           "hour":"10am - 11am",
+           "description": "From My Little Poro to Baby Bunny, Finnish artist Jasmin Anoschkin’s large-scale, colourful wooden sculptures look amusing at first glance, but show something of the magical world of animals that have spirits. Taking inspiration from pop culture and the toy industry, each character has a story to tell. ",
+           "image": "JasminAnoschkin_BabyBunny_2012.jpg",
+        },
+        {
+            "activity": "NEVERLAND ",
+            "day":"Wednesday 13th - Thursday 14th February,",
+            "hour":"10am, 11.15am, 1.30pm",
+            "description": "Inspired by J.M. Barrie’s Neverland in Peter Pan, this immersive new show for children aged 1-3 uses 360 degree video projections, as well as original music and performance to tell the story of a child’s imagination. This show has been made for adult/child pairs and each ticket admits one adult and one 1-3 year old.",
+            "image": "Neverland_ Jill Howarth.jpg",
+        },
+         {
+            "activity": "WTPA GUERILLA POETS",
+            "day":"Wednesday 20th February",
+            "hour":"11am - 1pm",
+            "description": "West Thornton Primary Academy has set up a community based poetry group which produces poetry that questions, challenges and supports events in the world around them, which they perform in unusual and fun places.",
+            "image": "guerilla-poets.jpg",
+         },
+         {
+            "activity": "ROOM FOR CHILDREN",
+            "day":"Thur 21 February ",
+            "hour":"11am - 13pm",
+            "description": "The National Poetry Library presents Room for Children - a unique Swedish library for the young and their adults, adapted to children’s needs and their perceptions of the world. Visitors can find children’s books from all of the Nordic countries represented, both in English and in their original language. The original Room for Children is located in the Stockholm Culture Centre (Kulturhuset Stadsteatern), in Sweden.",
+            "image": "NationalPoetryLibrary_LorraineMariner.jpg",
+         },
+         {
+            "activity": "LEGO® BUILD THE CHANGE",
+            "day":"Sat 23th February",
+            "hour":"10.30am, 12.30pm & 2.30pm",
+            "description": "Imagine festival-goers can listen to the stories of LEGO® Certified Professionals, who have turned their love for building and creating with LEGO bricks into a career. Participants are also encouraged to take part in the creation of a mosaic.",
+            "image": "BuildTheChangeLego.png",
+         },
+         {
+            "activity": "SAFARIUM",
+            "day":"Sat 2nd March",
+            "hour":"11am, 12:30pm & 2:30pm",
+            "description": "Come and explore, the performance that’s also a workshop, a laboratory and a safari! Children can wander around and transform a tactile landscape together with tree performers. For ages 1 – 3 and children with special needs. All children must be accompanied by an adult.",
+            "image": "safarium.jpg",
+         },
+         {
+            "activity": "HELLO HOLLOW",
+            "day":"Fri 8th March",
+            "hour":"12:30pm & 5:30pm",
+            "description": "Hello Hollow is a creative participation project for children aged 8-9 years old, where children with work with Danish artist Seimi Nørregaard to design and build personalised dens which will explore what a home is.",
+            "image": "hello_hollow.jpg",
+         },
+         {
+            "activity": "PERNILLA LINDROOS",
+            "day":"Sat 9th March",
+            "hour":"11am, 10:30am - 11:30am",
+            "description": "Author Pernilla Lindroos shares her two books including a story of a confident anteater and a little mouse called Macaron.",
+            "image": "PernillaLindroos_MacaronMouse.jpg",
+         },
+         
+
+ 
+ 
+
+
+
+   ]
+
 };

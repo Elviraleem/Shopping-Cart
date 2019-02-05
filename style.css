@@ -392,7 +392,8 @@ hr {
 .contenido-agenda {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px
+    grid-gap: 20px;
+    /* grid-template-rows: 500px; */
 }
 
 
@@ -491,9 +492,16 @@ footer {
 }
 
 .title-day-event{
-    display: flex;
-    justify-content: space-between;
     margin-top: 10px;
+}
+
+.event-info{
+    width: 250px;
+    height: auto;
+}
+
+.event-img img{
+    width: 274px;
 }
 
 
@@ -518,6 +526,9 @@ footer {
     margin-top: 25px;
     width: 80%;
     justify-self: center;
+}
+.store-img{
+    background-size: cover;
 }
 
 .title-about-info{

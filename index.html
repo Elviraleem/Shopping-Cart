@@ -32,8 +32,9 @@
         <title>Bookstore</title>
     </head>
 
-    <body onresize="app.window()"> <!-- onresize event. It has to be in the body and call a function. 
-                                        Due to it´s outside the id="app" the function starts with app. -->
+    <body onresize="app.window()">
+        <!-- onresize event. It has to be in the body and call a function. Due to it´s
+        outside the id="app" the function starts with app. -->
         <div id="app">
 
             <header>
@@ -124,8 +125,10 @@
                                 <span id="item_3"></span>
                                 <div class="carousel-item item_1">
                                     <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
-                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
-                                    <a v-else v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
+                                    <a
+                                        v-else-if="windowWidth > 478 "
+                                        v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else="v-else" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat. Maecenas lacus
@@ -136,8 +139,10 @@
 
                                 <div class="carousel-item item_2">
                                     <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImages()" alt=""></a>
-                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
-                                    <a v-else v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
+                                    <a
+                                        v-else-if="windowWidth > 478 "
+                                        v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else="v-else" v-on:click="showPages('itemsCart', item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
@@ -146,13 +151,15 @@
                                 </div>
 
                                 <div class="carousel-item item_3">
-                                    <!-- v-if con las diferentes medidas del windowWidth en cada <a>. 
-                                        Crear también en main.js 2 funciones getSliderImages para tablet y móvil
-                                         con un parámetro que cambie la imagen según dispositivo.  --> 
-                                        
+                                    <!-- v-if con las diferentes medidas del windowWidth en cada <a>. Crear también
+                                    en main.js 2 funciones getSliderImages para tablet y móvil con un parámetro que
+                                    cambie la imagen según dispositivo. -->
+
                                     <a v-if="windowWidth > 768" v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImages()" alt=""></a>
-                                    <a v-else-if="windowWidth > 478 " v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
-                                    <a v-else v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
+                                    <a
+                                        v-else-if="windowWidth > 478 "
+                                        v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesTablet()" alt=""></a>
+                                    <a v-else="v-else" v-on:click="showPages('itemsCart' , item.title)"><img :src="getSliderImagesMobile()" alt=""></a>
                                     <!-- <h2>Books of the month</h2>-->
                                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>-->
@@ -216,7 +223,9 @@
                             </div>
                         </div>
                         <div class="map-store-images">
-                            <div :style="{'background-image': 'url(agenda_images/'+ aboutImage +')'}" class="store-img">
+                            <div
+                                :style="{'background-image': 'url(agenda_images/'+ aboutImage +')'}"
+                                class="store-img">
 
                                 <!-- <img src="agenda_images/amy-shamblen-671056-unsplash.jpg" alt=""> -->
                             </div>
@@ -234,157 +243,28 @@
 
                 <div v-if="pages == 'agenda'" class="agenda">
                     <div class="contenido-agenda">
-                        <div class="event-info">
+                        <div v-for="item in myAgenda" class="event-info">
                             <div class="event-img">
-                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                                <img :src="'agenda_images/' + item.image" :alt="item.activity">
                             </div>
                             <div class="event-description">
                                 <div class="title-day-event">
-                                    <p>Title of the event</p>
-                                    <p>15h</p>
+                                    <p>{{ item.activity }}</p>
+                                    <p>{{ item.hour }}</p>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
-                                    cupiditate! Vel, accusamus.
+                                <p>{{ item.description }}
                                 </p>
-                                <div class="collapse" id="block-id">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
-                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
-                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
-                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
-                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
-                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
-                                        nulla enim consectetur, maxime.</p>
-                                </div>
-                                <a
-                                    href="#block-id"
-                                    data-toggle="collapse"
-                                    aria-expanded="false"
-                                    aria-controls="block-id">
-
-                                    <span class="collapsed">
-                                        Show more
-                                    </span>
-                                    <span class="expanded">
-                                        Show Less
-                                    </span>
-
-                                </a>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------------------- BLOG -->
+                <div v-if="pages == 'blog'" class="blog">
+                    <div class="contenido-blog">
                         <div class="event-info">
                             <div class="event-img">
-                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
-                            </div>
-                            <div class="event-description">
-                                <div class="title-day-event">
-                                    <p>Title of the event</p>
-                                    <p>15h</p>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
-                                    cupiditate! Vel, accusamus.
-                                </p>
-                                <div class="collapse" id="block-id">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
-                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
-                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
-                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
-                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
-                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
-                                        nulla enim consectetur, maxime.</p>
-                                </div>
-                                <a
-                                    href="#block-id"
-                                    data-toggle="collapse"
-                                    aria-expanded="false"
-                                    aria-controls="block-id">
-
-                                    <span class="collapsed">
-                                        Show more
-                                    </span>
-                                    <span class="expanded">
-                                        Show Less
-                                    </span>
-
-                                </a>
-                            </div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-img">
-                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
-                            </div>
-                            <div class="event-description">
-                                <div class="title-day-event">
-                                    <p>Title of the event</p>
-                                    <p>15h</p>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
-                                    cupiditate! Vel, accusamus.
-                                </p>
-                                <div class="collapse" id="block-id">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
-                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
-                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
-                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
-                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
-                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
-                                        nulla enim consectetur, maxime.</p>
-                                </div>
-                                <a
-                                    href="#block-id"
-                                    data-toggle="collapse"
-                                    aria-expanded="false"
-                                    aria-controls="block-id">
-
-                                    <span class="collapsed">
-                                        Show more
-                                    </span>
-                                    <span class="expanded">
-                                        Show Less
-                                    </span>
-
-                                </a>
-                            </div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-img">
-                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
-                            </div>
-                            <div class="event-description">
-                                <div class="title-day-event">
-                                    <p>Title of the event</p>
-                                    <p>15h</p>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, inventore
-                                    cupiditate! Vel, accusamus.
-                                </p>
-                                <div class="collapse" id="block-id">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, beatae,
-                                        tempora. Quam, ratione excepturi! Magnam, laudantium. Quo minima porro vero
-                                        temporibus quidem reprehenderit consectetur adipisci aspernatur, eius nam,
-                                        fugiat et consequuntur natus maiores ad magnam. Excepturi ea quisquam ipsa,
-                                        impedit obcaecati repellat libero consequuntur! Omnis placeat, delectus.
-                                        Repellendus dolorum iure, qui voluptates natus nihil architecto perferendis,
-                                        nulla enim consectetur, maxime.</p>
-                                </div>
-                                <a
-                                    href="#block-id"
-                                    data-toggle="collapse"
-                                    aria-expanded="false"
-                                    aria-controls="block-id">
-
-                                    <span class="collapsed">
-                                        Show more
-                                    </span>
-                                    <span class="expanded">
-                                        Show Less
-                                    </span>
-
-                                </a>
-                            </div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-img">
-                                <img src="agenda_images/amy-shamblen-651683-unsplash.jpg" alt="image">
+                                <img src="" alt="image">
                             </div>
                             <div class="event-description">
                                 <div class="title-day-event">
@@ -420,10 +300,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <!--------------------------------------------------------------- BLOG -->
 
                 <!--------------------------------------------------------------- ALL BOOKS -->
 
@@ -620,7 +497,7 @@
 
                             <div class="item">
                                 <div class="item-detail">
-                                    <img class="item-image" src="images/shop_img_home.png" alt="">
+                                    <img class="item-image" :src="'/images/' + item.cover_image" alt="">
                                     <div class="item-title">
                                         <h5>{{ item.title }}</h5>
                                         <button v-on:click="removeItemFromCart(index)" class="remove">remove</button>

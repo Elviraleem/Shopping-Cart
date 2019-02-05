@@ -15,6 +15,7 @@ var app = new Vue({
         book: "",
         cart: [],
         myData: [],
+        myAgenda: [],
         counter: 0,
         emptyCart: "Your cart is empty",
         aboutImage: "amy-shamblen-671056-unsplash.jpg",
@@ -32,8 +33,7 @@ var app = new Vue({
 
         getData: function () {
             this.myData = myJson.books;
-            this.myImages = myJson.books.images
-
+            this.myAgenda = myJson.agenda;
         },
 
         addToCart: function (item) {
