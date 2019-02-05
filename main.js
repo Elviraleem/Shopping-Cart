@@ -40,7 +40,7 @@ var app = new Vue({
             var cartItem = {
                 "title": item.title,
                 "price": item.price,
-                "small-image": item["small-image"],
+                "smallImage": item.cover_image,
                 "quantity": this.counter
             }
             
