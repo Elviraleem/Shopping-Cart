@@ -741,6 +741,10 @@ footer {
     grid-template-columns: 1fr;
     
 }
+.request{
+    display: flex;
+    flex-direction: column;
+}
 .main-row{
     display: grid;
     grid-template-columns: 2fr 1fr;

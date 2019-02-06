@@ -41,7 +41,7 @@ var app = new Vue({
                 "title": item.title,
                 "price": item.price,
                 "smallImage": item.cover_image,
-                "quantity": this.counter
+                "quantity": Number(this.counter)
             }
             
             if(!this.checkIfBookIsInside(item)){
