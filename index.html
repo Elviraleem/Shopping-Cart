@@ -23,8 +23,6 @@
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-------- CSS file -------->
         <link rel="stylesheet" href="style.css">
@@ -241,9 +239,10 @@
 
                 <!--------------------------------------------------------------- AGENDA -->
 
-                <div v-if="pages == 'agenda'" class="agenda">
-                    <div class="contenido-agenda">
-                        <div v-for="item in myAgenda" class="event-info">
+                <div v-if="pages == 'agenda'" class="agenda">             
+
+                    <div class="contenido-agenda elvira">
+                        <div v-for="item in myAgenda" class="event-info elvira_item">
                             <div class="event-img">
                                 <img :src="'agenda_images/' + item.image" :alt="item.activity">
                             </div>
@@ -576,11 +575,15 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+   
+
     <!------- VUE SCRIPTS------->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!------- JS SCRIPTS------->
     <script src="data-json.js"></script>
     <script src="main.js"></script>
+
 </body>
 
 </html>

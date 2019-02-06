@@ -6,6 +6,12 @@ var app = new Vue({
         this.getData();
         this.windowWidth = window.innerWidth;
     },
+    updated(){
+        // this.$nextTick(function () {
+        //     app.initMasonry();
+        // })
+    },
+  
 
     data: {
         pages: 'home',
@@ -28,7 +34,6 @@ var app = new Vue({
         showPages: function (id, book) {
             this.pages = id;
             this.book = book;
-
         },
 
         getData: function () {
@@ -85,6 +90,9 @@ var app = new Vue({
             var selectedImage = this.imagesLinksMobile[sliderImageMobile];
             return "images/" + selectedImage;
 
+        },
+        initMasonry(){
+            $('.elvira').masonry({itemSelector: '.elvira_item', gutter: 30, columnWidth: 250});
         },
 
         window(){
@@ -155,3 +163,5 @@ var app = new Vue({
     }
   
 });
+
+
