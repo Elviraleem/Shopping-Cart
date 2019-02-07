@@ -1,3 +1,4 @@
+
 var app = new Vue({
 
     el: '#app',
@@ -31,9 +32,9 @@ var app = new Vue({
 
     methods: {
 
-        showPages: function (id, book) {
+        showPages: function (id) {
             this.pages = id;
-            this.book = book;
+            // this.book = book;
         },
 
         getData: function () {
