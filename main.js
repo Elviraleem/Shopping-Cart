@@ -32,9 +32,9 @@ var app = new Vue({
 
     methods: {
 
-        showPages: function (id) {
+        showPages: function (id, book) {
             this.pages = id;
-            // this.book = book;
+             this.book = book;
         },
 
         getData: function () {
