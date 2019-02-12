@@ -342,7 +342,7 @@
                             <div v-for="item in filteredBooks" class="book-info">
                                 <div class="cover-img">
                                     <a v-on:click="showPages('itemsCart', item.title)">
-                                        <img v-bind:src="'/images/' + item.cover_image" v-bind:alt="item.title">
+                                        <img v-bind:src="'images/' + item.cover_image" v-bind:alt="item.title">
                                     </a>
 
                                 </div>
@@ -367,11 +367,11 @@
 
                         <div class="item-pict">
                             <div class="big-pict">
-                                <img v-bind:src="'/images/' + bookSelected.cover_image">
+                                <img v-bind:src="'images/' + bookSelected.cover_image">
                             </div>
                             <div class="small-pict">
                                 <div class="pict">
-                                    <img src="libros/MiniHeroes_1.png">
+                                    <img src="https://placehold.it/250x200">
                                 </div>
                                 <div class="pict">
                                     <img src="https://placehold.it/250x200">
