@@ -529,10 +529,25 @@
                             <textarea id="requests" name="requests" rows="5" cols="33"></textarea>
                         </div>
                         <div class="checkout-total-price">
-                            <p>Subtotal before delivery</p>
-                            <p>
-                                {{ totalPrice }}
-                                &euro;</p>
+                            <div>
+                                <div v-if="totalPrice >= 50" class="total-price">
+                                        <p>10% Off</p>
+                                        <p :class="{ 'text-danger' :discount }">You saved: 
+                                                {{ discount.toFixed(2) }}
+                                                &euro;</p>
+                                            <p class="total-price-big"><strong>{{ (totalPrice - getDiscount).toFixed(2) }}
+                                                    &euro;</strong></p>
+                                </div>
+                                    
+                                        <div v-else class="offDiscount">
+                                                <p>Spend over 50€ and automatically get 10% off</p>
+                                                <p class="total-price-big">{{ totalPrice }}
+                                                        &euro;</p>
+                                        </div>
+                                        
+                                   
+                            </div>
+                           
                             <button class="checkOut">Checkout</button>
                         </div>
                     </div>

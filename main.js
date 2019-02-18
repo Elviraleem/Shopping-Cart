@@ -1,4 +1,3 @@
-
 var app = new Vue({
 
     el: '#app',
@@ -7,12 +6,9 @@ var app = new Vue({
         this.getData();
         this.windowWidth = window.innerWidth;
     },
-    updated(){
-        // this.$nextTick(function () {
-        //     app.initMasonry();
-        // })
+    updated() {
+        // this.$nextTick(function () {     app.initMasonry(); })
     },
-  
 
     data: {
         pages: 'home',
@@ -24,6 +20,7 @@ var app = new Vue({
         myData: [],
         myAgenda: [],
         counter: 0,
+        discount: 0,
         emptyCart: "Your cart is empty",
         aboutImage: "amy-shamblen-671056-unsplash.jpg",
         windowWidth: 0
@@ -34,7 +31,7 @@ var app = new Vue({
 
         showPages: function (id, book) {
             this.pages = id;
-             this.book = book;
+            this.book = book;
         },
 
         getData: function () {
@@ -49,30 +46,38 @@ var app = new Vue({
                 "smallImage": item.cover_image,
                 "quantity": Number(this.counter)
             }
-            
-            if(!this.checkIfBookIsInside(item)){
+
+            if (!this.checkIfBookIsInside(item)) {
                 this.counter = 0;
-                this.cart.push(cartItem);
-            }else{
-                var itemInCart = this.cart.find(book => book.title == item.title);
-                console.log( typeof itemInCart.quantity )
-                let qty = Number(itemInCart.quantity) 
+                this
+                    .cart
+                    .push(cartItem);
+            } else {
+                var itemInCart = this
+                    .cart
+                    .find(book => book.title == item.title);
+                console.log(typeof itemInCart.quantity)
+                let qty = Number(itemInCart.quantity)
                 itemInCart.quantity = qty + Number(this.counter);
 
-            
                 this.counter = 0;
                 console.log(this.cart);
-            }  
-            
+            }
+
         },
-        checkIfBookIsInside(item){
-            return this.cart.filter(e => e.title === item.title).length > 0;
-                
+        checkIfBookIsInside(item) {
+            return this
+                .cart
+                .filter(e => e.title === item.title)
+                .length > 0;
+
         },
-        removeItemFromCart(index){
-           this.cart.splice(index, 1);
-            if(this.cart.length == 0) {
-                console.log( this.emptyCart);
+        removeItemFromCart(index) {
+            this
+                .cart
+                .splice(index, 1);
+            if (this.cart.length == 0) {
+                console.log(this.emptyCart);
             }
         },
         getSliderImages() {
@@ -82,29 +87,36 @@ var app = new Vue({
             return "images/" + selectedImage;
         },
         getSliderImagesTablet() {
-            var sliderImageTablet = Math.floor(Math.random() * this.imagesLinksTablet.length);
+            var sliderImageTablet = Math.floor(
+                Math.random() * this.imagesLinksTablet.length
+            );
             var selectedImage = this.imagesLinksTablet[sliderImageTablet];
             return "images/" + selectedImage;
         },
         getSliderImagesMobile() {
-            var sliderImageMobile = Math.floor(Math.random() * this.imagesLinksMobile.length);
+            var sliderImageMobile = Math.floor(
+                Math.random() * this.imagesLinksMobile.length
+            );
             var selectedImage = this.imagesLinksMobile[sliderImageMobile];
             return "images/" + selectedImage;
 
         },
-        initMasonry(){
-            $('.elvira').masonry({itemSelector: '.elvira_item', gutter: 30, columnWidth: 250});
+        initMasonry() {
+            $('.elvira').masonry(
+                {itemSelector: '.elvira_item', gutter: 30, columnWidth: 250}
+            );
         },
 
-        window(){
+        window() {
             this.windowWidth = window.innerWidth;
         }
-        
+
     },
 
     computed: {
         filteredBooks: function () {
-            return this.myData         
+            return this
+                .myData
                 .filter((book) => {
                     return book
                         .title
@@ -124,45 +136,56 @@ var app = new Vue({
                 })
         },
         /* Get the slider images from myData. I will call this function on getSliderImages() inside methods
-            to have an array of all the images and with the lenght calculate the random so I can select one 
+            to have an array of all the images and with the lenght calculate the random so I can select one
             and show it on the slider. */
-        
-        imagesLinks(){
-            return this.myData.map((e) =>{
-                return e.slider_image_web
-            });   
+
+        imagesLinks() {
+            return this
+                .myData
+                .map((e) => {
+                    return e.slider_image_web
+                });
         },
-        imagesLinksTablet(){
-            return this.myData.map((e) =>{
-                return e.slider_image_tablet
-            });   
+        imagesLinksTablet() {
+            return this
+                .myData
+                .map((e) => {
+                    return e.slider_image_tablet
+                });
         },
-        imagesLinksMobile(){
-            return this.myData.map((e) =>{
-                return e.slider_image_mobile
-            });   
+        imagesLinksMobile() {
+            return this
+                .myData
+                .map((e) => {
+                    return e.slider_image_mobile
+                });
         },
         bookSelected: function () {
-            return this.myData.find(book => book.title == this.book);
+            return this
+                .myData
+                .find(book => book.title == this.book);
 
         },
-        totalItems(){
+        totalItems() {
             return Number(this.cart.map(book => book.quantity).reduce((a, b) => a + b, 0));
         },
-        
-        totalPrice(){
-            return Number(this.cart.map(book => book.quantity * Number(book.price)).reduce((a,b) => a + b, 0 ).toFixed(2));
-            
-            
-            // var itemPrices = this.cart.map(function (book) {
-            //     return book.price * book.quantity;
-            // })
-            
-            // console.log(itemPrices);
-            
+
+        totalPrice() {
+            return Number(
+                this.cart.map(book => book.quantity * Number(book.price)).reduce((a, b) => a + b, 0).toFixed(2)
+            );
+
+            // var itemPrices = this.cart.map(function (book) {     return book.price *
+            // book.quantity; }) console.log(itemPrices);
+
         },
+        getDiscount() {
+            if (this.totalPrice >= 50) {
+                return this.discount = this.totalPrice * 0.1;
+            }
+            return 0;
+        }
+
     }
-  
+
 });
-
-
