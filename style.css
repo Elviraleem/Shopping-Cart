@@ -498,7 +498,9 @@ footer {
 .store-img {
   background-size: cover;
 }
-
+.store-img img {
+  width: 100%;
+}
 .title-about-info {
   text-align: center;
 }
@@ -1049,6 +1051,7 @@ button.remove {
 
   .map iframe {
     width: 100%;
+    margin-top: -100px;
   }
 
   .store-img {
@@ -1145,7 +1148,8 @@ button.remove {
   }
   .filters {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 300px;
   }
 
   .ages-filter select {
@@ -1208,5 +1212,14 @@ button.remove {
 
   .medium-6.columns {
     width: 100%;
+  }
+
+  .checkout-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0px;
+  }
+  .checkout-total-price {
+    margin-top: 20px;
   }
 }
