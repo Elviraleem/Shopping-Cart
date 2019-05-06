@@ -65,13 +65,6 @@
                             </a>
                         </ul>
                     </nav>
-
-                    <div class="search">
-                        <span class="icon">
-                            <i class="fas fa-search"></i>
-                        </span>
-                        <input v-model="search" type="search" id="search" placeholder="Search..."/>
-                    </div>
                     <div class="cart">
                         <a v-on:click="showPages('checkout')">
                             {{totalItems}}
@@ -191,11 +184,10 @@
                 <div v-if="pages == 'about'" class="about">
                     <div class="contenido-about">
                         <div class="about-content">
-                            <h3>Lorem ipsum.</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro alias
-                                similique, sed architecto, non possimus inventore voluptate delectus pariatur
-                                unde autem earum doloremque esse nemo tempore minima, placeat beatae
-                                perferendis!</p>
+                            <h3>Our story</h3>
+                            <p>We're a bookstore specialized in books for children and young people.
+                                We have a wonderful selection of national and international publications in English, German, French, Italian, Dutch and Portuguese, that 
+                                many people (traveling or curious) & families love.</p>
                         </div>
 
                         <div class="about-info">
@@ -303,19 +295,22 @@
                 </div>
 
                 <!--------------------------------------------------------------- ALL BOOKS -->
-
+                
                 <div v-if="pages == 'allbooks'" class="allbooks">
                     <div class="contenido-allbooks">
                         <div class="box-quote">
-                            <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                                saepe ab, nisi quo laudantium perspiciatis assumenda.</p>
-                            <p class="title-book">Lorem ipsum dolor sit amet.</p>
+                            <p class="quote">"Nothing is lost... Everything is transformed"</p>
+                            <p class="title-book">–Michael Ende, The Neverending Story</p>
                         </div>
 
                         <div class="filters-bar">
-                            <div class="web-path">
-                                <p>Home/AllBooks</p>
-                            </div>
+                           
+                                <div class="search">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input v-model="search" type="search" id="search" placeholder="Search..."/>
+                                </div>
                             <div class="filters">
                                 <div class="ages-filter">
                                     <select v-model="agesValue">
@@ -338,6 +333,7 @@
                                     </select>
                                 </div>
                             </div>
+                         
                         </div>
                         <div class="book-box">
                             <div v-for="item in filteredBooks" class="book-info">
@@ -356,7 +352,7 @@
                             </div>
                         </div>
 
-                    </div>
+                 
 
                 </div>
 
