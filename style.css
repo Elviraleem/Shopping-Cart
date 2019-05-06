@@ -527,9 +527,9 @@ footer {
 }
 
 .map iframe {
+  width: 100%;
+  height: 575px;
   border: 0px;
-
-  height: 338px;
 }
 
 .contenido-allbooks {
@@ -954,6 +954,7 @@ button.remove {
   .title-about-info {
     width: 180px;
   }
+
   .map {
     justify-self: center;
     width: 100%;
@@ -1059,6 +1060,7 @@ button.remove {
 
   .map iframe {
     width: 100%;
+    height: 338px;
   }
 
   .store-img {

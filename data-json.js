@@ -172,7 +172,7 @@ var myJson = {
         }
       ],
 
-      cover_image: "PapayYo_cover.jpg",
+      cover_image: "PapaYyoAveces_cover.jpg",
       slider_image_web: "PapaYyoAveces_home.png",
       slider_image_tablet: "PapaYyoAveces_home_tablet.png",
       slider_image_mobile: "PapaYyoAveces_home_mobile.png",
