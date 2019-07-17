@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Elviraleem/Shoppin-Cart#readme",
   "dependencies": {
     "axios-version": "^1.0.0",
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.4.0",
+    "lodash": ">=4.17.13"
   }
 }
